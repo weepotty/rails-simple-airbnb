@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:show]
+  before_action :set_flat, only: [:show, :edit, :update]
 
   # GET /flats
   def index
@@ -23,6 +23,18 @@ class FlatsController < ApplicationController
       redirect_to flat_path(@flat)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @flat
+  end
+
+  def update
+    if @flat.update(flat_params)
+      redirect_to flat_path(@flat)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

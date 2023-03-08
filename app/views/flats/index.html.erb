@@ -12,9 +12,14 @@
               <p><i class="fa-solid fa-euro-sign"></i> <%= flat.price_per_night %></p>
             </div>
             <ul class="list-group list-group-flush">
-              <%= link_to flat_path(flat) do %>
-                <li class="list-group-item">More info</li>
-              <% end %>
+              <li class="list-group-item">
+                <%= link_to flat_path(flat) do %>
+                  More info
+                <% end %>
+                <%= link_to edit_flat_path(flat) do %>
+                  Edit
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
