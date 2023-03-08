@@ -1,4 +1,6 @@
 class FlatsController < ApplicationController
+  before_action :set_flat, only: [:show]
+
   # GET /flats
   def index
     @flats = Flat.all
@@ -6,11 +8,31 @@ class FlatsController < ApplicationController
 
   # GET /flat/:id
   def show
-    @flat = Flat.find(params[:id])
+    @flat
   end
 
+  # GET /flats/new
   def new
     @flat = Flat.new
   end
 
+  # POST /flats
+  def create
+    @flat = Flat.new(flat_params)
+    if @flat.save
+      redirect_to flat_path(@flat)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def flat_params
+    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests)
+  end
+
+  def set_flat
+    @flat = Flat.find(params[:id])
+  end
 end
