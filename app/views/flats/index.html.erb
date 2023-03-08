@@ -13,16 +13,18 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <%= link_to flat_path(flat) do %>
-                  More info
-                <% end %>
-                <%= link_to edit_flat_path(flat) do %>
-                  Edit
-                <% end %>
-                <%= link_to "Delete",
+                <ul class='mx-0 px-0'>
+                  <li class='text-primary'><%= link_to flat_path(flat) do %>
+                      More info
+                    <% end %></li>
+                  <li class='text-warning'><%= link_to edit_flat_path(flat) do %>
+                      Edit
+                    <% end %></li>
+                  <li class='text-danger'> <%= link_to "Delete",
                   flat_path(flat),
                   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-                %>
+                %></li>
+                </ul>
               </li>
             </ul>
           </div>
